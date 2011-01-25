@@ -1,0 +1,121 @@
+
+
+Processing Rails::InfoController#properties (for ::1 at 2011-01-24 15:02:11) [GET]
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed in 248ms (View: 14, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing Rails::InfoController#properties (for ::1 at 2011-01-24 15:02:35) [GET]
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed in 65ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (43.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (41.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (33.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePosts (20110125182548)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110125182548')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("posts")[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2011-01-25 10:46:12) [GET]
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 212ms (View: 14, DB: 2) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-25 10:46:45) [GET]
+
+ActionController::RoutingError (No route matches "/post" with {:method=>:get}):
+  <internal:prelude>:10:in `synchronize'
+  C:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  C:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  C:/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing PostsController#index (for 127.0.0.1 at 2011-01-25 10:47:01) [GET]
+  [4;36;1mPost Load (1.0ms)[0m   [0;1mSELECT * FROM "posts" [0m
+Rendering template within layouts/posts
+Rendering posts/index
+Completed in 3307ms (View: 3295, DB: 1) | 200 OK [http://localhost/posts]
+
+
+Processing PostsController#new (for 127.0.0.1 at 2011-01-25 10:47:07) [GET]
+Rendering template within layouts/posts
+Rendering posts/new
+Completed in 601ms (View: 585, DB: 0) | 200 OK [http://localhost/posts/new]
+
+
+Processing PostsController#create (for 127.0.0.1 at 2011-01-25 10:47:21) [POST]
+  Parameters: {"authenticity_token"=>"h+HsCIY6dXry12T0YzP+uOnOLADnCDgoIjyszfDhZmc=", "post"=>{"title"=>"1st post", "body"=>"", "created_at(1i)"=>"2011", "created_at(2i)"=>"1", "created_at(3i)"=>"25", "created_at(4i)"=>"18", "created_at(5i)"=>"47"}, "commit"=>"Create"}
+  [4;35;1mPost Create (2.0ms)[0m   [0mINSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES('1st post', '', '2011-01-25 18:47:00', '2011-01-25 18:47:21')[0m
+Redirected to http://localhost:3000/posts/1
+Completed in 249ms (DB: 2) | 302 Found [http://localhost/posts]
+
+
+Processing PostsController#show (for 127.0.0.1 at 2011-01-25 10:47:22) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPost Load (1.0ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts"."id" = 1) [0m
+Rendering template within layouts/posts
+Rendering posts/show
+Rendered posts/_post (3.0ms)
+Completed in 34ms (View: 19, DB: 1) | 200 OK [http://localhost/posts/1]
+
+
+Processing PostsController#edit (for 127.0.0.1 at 2011-01-25 10:47:25) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPost Load (1.0ms)[0m   [0mSELECT * FROM "posts" WHERE ("posts"."id" = 1) [0m
+Rendering template within layouts/posts
+Rendering posts/edit
+Completed in 70ms (View: 19, DB: 1) | 200 OK [http://localhost/posts/1/edit]
+
+
+Processing PostsController#update (for 127.0.0.1 at 2011-01-25 10:47:32) [PUT]
+  Parameters: {"authenticity_token"=>"h+HsCIY6dXry12T0YzP+uOnOLADnCDgoIjyszfDhZmc=", "post"=>{"title"=>"1st post", "body"=>"blah blah blah", "created_at(1i)"=>"2011", "created_at(2i)"=>"1", "created_at(3i)"=>"25", "created_at(4i)"=>"18", "created_at(5i)"=>"47"}, "commit"=>"Update", "id"=>"1"}
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts"."id" = 1) [0m
+  [4;35;1mPost Update (1.0ms)[0m   [0mUPDATE "posts" SET "body" = 'blah blah blah', "updated_at" = '2011-01-25 18:47:32' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/posts/1
+Completed in 76ms (DB: 1) | 302 Found [http://localhost/posts/1]
+
+
+Processing PostsController#show (for 127.0.0.1 at 2011-01-25 10:47:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPost Load (1.0ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts"."id" = 1) [0m
+Rendering template within layouts/posts
+Rendering posts/show
+Rendered posts/_post (2.0ms)
+Completed in 18ms (View: 4, DB: 1) | 200 OK [http://localhost/posts/1]
